@@ -1,0 +1,344 @@
+/* --- Base Theme & Reset --- */
+:root {
+  --primary-red: #ff4d4d;
+  --dark-bg: #0b0e14;
+  --sidebar-bg: #111827;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --border-color: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Prevents page-level scrolling */
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  overflow: hidden; /* Stops overall page scroll */
+}
+
+/* --- Layout Structure --- */
+.home-layout, .auth-page, .signup-page, .main-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* --- Sidebar (Matches Screenshot) --- */
+.side-nav {
+  width: 260px;
+  background: var(--sidebar-bg);
+  height: 100vh;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.nav-logo {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.nav-links li { margin-bottom: 15px; }
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  padding: 8px 0;
+  transition: 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: #ffffff;
+}
+
+.nav-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+  flex: 1;
+  padding: 60px;
+  overflow-y: auto; /* Only the content scrolls if needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.hero-cta {
+  color: #7c4dff;
+  text-decoration: underline;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+/* --- Info Cards (Curved Boxes) --- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.info-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  color: #000000;
+  min-height: 250px;
+}
+
+.icon-box {
+  background: #f0fdf4;
+  color: #22c55e;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.info-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.info-card p { color: #4b5563; line-height: 1.5; }
+
+/* --- Buttons (Pill Style) --- */
+.btn-red-pill {
+  background: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-outline-pill {
+  background: transparent;
+  color: white;
+  border: 1px solid #374151;
+  padding: 12px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* --- Bottom Banner --- */
+.fraud-banner {
+  position: fixed;
+  bottom: 30px;
+  background: #111827;
+  border-radius: 12px;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1000px;
+  border: 1px solid var(--border-color);
+}
+
+.banner-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- Auth Container Fixes --- */
+.auth-content, .signup-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--dark-bg);
+}
+
+.auth-card, .form-section {
+  background: #111827;
+  padding: 40px;
+  border-radius: 12px;
+  width: 400px;
+  border: 1px solid var(--border-color);
+}
+/* --- Signup Page Layout --- */
+.signup-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding: 80px;
+  gap: 100px; /* Space between form and text */
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-bg);
+}
+
+/* Left side: The Form Card */
+.form-section {
+  background: #111827;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #1f2937;
+  width: 450px;
+  flex-shrink: 0;
+}
+
+.form-section h2 { font-size: 2rem; margin-bottom: 5px; }
+.subtitle { color: var(--text-muted); margin-bottom: 30px; font-size: 0.9rem; }
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  background: transparent;
+  border: 1px solid #374151;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: white;
+  width: 100%;
+}
+
+/* Wide Red Button */
+.btn-red-wide {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* Right side: Marketing Content */
+.marketing-section {
+  max-width: 500px;
+}
+
+.marketing-section h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.benefit-list li {
+  margin-bottom: 15px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.benefit-list li::before {
+  content: "✓";
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* Terms and Social Logins */
+.terms { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; display: flex; gap: 10px; }
+.social-divider { text-align: center; margin: 20px 0; color: #4b5563; font-size: 0.8rem; }
+
+.social-logins { display: flex; flex-direction: column; gap: 10px; }
+.social-btn {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.upload-section {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.upload-box {
+  background: #111827; /* Dark like sidebar */
+  border: 2px dashed #374151;
+  border-radius: 24px;
+  padding: 40px;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  border-color: var(--primary-red);
+}
+
+.upload-box i {
+  font-size: 3rem;
+  color: var(--primary-red);
+  margin-bottom: 15px;
+}
+
+.upload-box h3 {
+  margin-bottom: 5px;
+}
+
+.upload-box p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Resume Shield</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="signup-page">
+
+  <div class="main-wrapper">
+    <nav class="side-nav">
+      <div class="nav-logo">
+        <i class="fas fa-shield-alt"></i> RESUME SHIELD
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-footer">
+        <button class="btn-red" onclick="window.location.href='signup.html'">TRY FOR FREE</button>
+        <button class="btn-outline" onclick="window.location.href='login.html'">SIGN IN</button>
+      </div>
+    </nav>
+
+    <div class="signup-container">
+      
+      <div class="form-section">
+        <h2>Sign Up</h2>
+        <p class="subtitle">No credit card required.</p>
+
+        <div class="input-group">
+          <input type="text" id="username" placeholder="Name">
+          <input type="email" id="email" placeholder="Email Address">
+          <input type="password" id="password" placeholder="Create Password">
+        </div>
+
+        <button class="btn-red-wide" onclick="signup()">SIGN UP FOR FREE</button>
+
+        <div class="terms">
+          <input type="checkbox" id="terms">
+          <label for="terms">I have read and agree to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+
+        <div class="social-divider">OR</div>
+
+        <div class="social-logins">
+          <button class="social-btn"><img src="https://img.icons8.com/color/16/000000/google-logo.png"/> SIGN IN WITH GOOGLE</button>
+          <button class="social-btn"><img src="https://img.icons8.com/color/16/000000/linkedin.png"/> SIGN IN WITH LINKEDIN</button>
+          <button class="social-btn"><i class="fab fa-github"></i> SIGN IN WITH GITHUB</button>
+        </div>
+      </div>
+
+      <div class="marketing-section">
+        <h1>Zero cost, maximum security!</h1>
+        <p>Get started with Resume Shield Pro Free Micro Plan and defend against hiring fraud.</p>
+        <ul class="benefit-list">
+          <li>500 Queries For Free</li>
+          <li>Real-time AI Scan</li>
+          <li>Instant Fraud Scoring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function signup() {
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password })
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        window.location.href = "dashboard.html";
+      } else {
+        alert(data.message);
+      }
+    }
+  </script>
+</body>
+</html>
